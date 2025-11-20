@@ -273,17 +273,17 @@ while(True):
 
 
     search_chain = RunnableBranch(
-    (lambda d: d.get("user_intent") == "get_course_detail",
-    RunnableLambda(get_course_detail)),
+        (lambda d: d.get("user_intent") == "get_course_detail",
+        RunnableLambda(get_course_detail)),
 
-    (lambda d: d.get("user_intent") == "similar_courses",
-    RunnableLambda(similar_courses)),
+        (lambda d: d.get("user_intent") == "similar_courses",
+        RunnableLambda(similar_courses)),
 
-    (lambda d: d.get("user_intent") == "courses_by_topics",
-    RunnableLambda(courses_by_topics_router)),
+        (lambda d: d.get("user_intent") == "courses_by_topics",
+        RunnableLambda(courses_by_topics_router)),
 
-    RunnablePassthrough()
-    )
+        RunnablePassthrough()
+        )
 
     context = search_chain.invoke(search_filter)  # pass dict directly
 
